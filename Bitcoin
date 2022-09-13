@@ -1,0 +1,30 @@
+<html>
+<head></head>
+<body>
+<p>What is Bitcoin price today?</p>
+<input type="text" id="inputRate" value="12">
+<p>How much $ do you have?</p>
+<input type="text" id="inputSum" value="0">
+<p>You can buy <span id="result">0</span> BTC</p>
+<script>
+  BitcoinCalculator = {
+    rehash: function() {
+      let rate = parseFloat(inputRate.value);
+      let sum = parseFloat(inputSum.value);
+      let canBuy = 0;
+      if (sum > 0 && rate > 0) {
+        canBuy = sum / rate;
+      }
+      result.innerHTML = canBuy;
+    },
+  };
+
+  inputRate.oninput = function() {
+    BitcoinCalculator.rehash();
+  };
+  inputSum.oninput = function() {
+    BitcoinCalculator.rehash();
+  };
+</script>
+</body>
+</html>
